@@ -16,5 +16,7 @@ public class CORestController {
 	@GetMapping("/process")
 	public ReadingCOTrigger processTriggers() throws Exception {
 		return service.processPendingTriggers();
+		
+		// in controller class we have to put another postmapping
 	}
 }
