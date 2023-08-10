@@ -1,4 +1,4 @@
-package in.ashokit.service;
+	package in.ashokit.service;
 
 import java.awt.Color;
 import java.io.File;
@@ -63,6 +63,9 @@ public class COServiceImpl implements COService {
 		HashOperations<String, Object, Object> opsForHash = redisTemplate.opsForHash();
 		
 		String address = (String) opsForHash.get("DHS", "DHS_OFFICE_ADDRESS");
+		
+		// when we remove multithreading for debugging
+//		String footer = (String) opsForHash.get("DHS", "DHS_OFFICE_ADDRESS");
 
 		final Long failed = 0l;
 		final Long success = 0l;
@@ -224,7 +227,7 @@ public class COServiceImpl implements COService {
 	private void updateTrigger(Long caseNum, File file) throws Exception {
 
 		COTriggerEntity coEntity = coTriggerRepo.findByCaseNum(caseNum);
-		byte[] array = new byte[(byte) file.length()];
+		byte[] array = new byte[(int) file.length()];
 
 		FileInputStream fis = new FileInputStream(file);
 		fis.read();
